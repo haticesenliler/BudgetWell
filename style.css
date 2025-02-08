@@ -1,1 +1,16 @@
+html,body{
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
+.header{
+    text-align: center;
+    font-size: larger;
+    color:rgb(117, 117, 228);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background: lightblue;
+    padding: 10px 0;
+    margin: 0;
+}
 
