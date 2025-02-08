@@ -4,74 +4,43 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./vars.css">
   <link rel="stylesheet" href="./style.css">
-  
-  
-  <style>
-   a,
-   button,
-   input,
-   select,
-   h1,
-   h2,
-   h3,
-   h4,
-   h5,
-   * {
-       box-sizing: border-box;
-       margin: 0;
-       padding: 0;
-       border: none;
-       text-decoration: none;
-       background: none;
-   
-       -webkit-font-smoothing: antialiased;
-   }
-   
-   menu, ol, ul {
-       list-style-type: none;
-       margin: 0;
-       padding: 0;
-   }
-   </style>
-  <title>Document</title>
+  <title>Budgetwell</title>
 </head>
 <body>
-  <div class="header ">
+  <div class="header">
+    <!-- Existing elements -->
     <div class="rec1"></div>
     <div class="rec2"></div>
     <div class="rec3"></div>
     <div class="rec4"></div>
     <div class="rec5"></div>
-    <div class="rect6"></div>
-    <div class="rec7"></div>
-    <div class="rec8"></div>
-    <div class="logo">logo here</div>
-    <div class="png">
-      budgeting, reminder, what was the other one??
-      <br />
+    
+    <!-- Three clickable boxes -->
+    <div class="rec6" onclick="showBox('Box 1')"></div>
+    <div class="rec7" onclick="showBox('Box 2')"></div>
+    <div class="rec8" onclick="showBox('Box 3')"></div>
+    
+    <!-- Big display box -->
+    <div id="bigBox" class="big-box">
+      <p id="bigBoxContent"></p>
     </div>
+
+    <!-- Rest of your elements -->
+    <div class="logo">logo here</div>
+    <div class="png">budgeting, reminder, what was the other one??</div>
     <div class="budgeting">BUDGETING</div>
     <div class="reminder">REMINDER</div>
     <div class="rec9"></div>
-    <div class="pic">
-      we gonna put a good picture here
-    </div>
+    <div class="pic">we gonna put a good picture here</div>
     <div class="app"></div>
     <div class="home">home</div>
     <div class="angle">a short explanation</div>
-    <div
-      class="Student"
-    >
-      we may have to talk with a mentor about here for capital bank
-      <br />
-      Student Credit Card / Discounts
-      <br />
-    </div>
-    <div class="never"> Never Miss a Due Date Again</div>
+    <div class="Student">we may have to talk with a mentor...</div>
+    <div class="never">Never Miss a Due Date Again</div>
     <div class="headline">HEADLINE</div>
   </div>
-  
+
+  <script src="script.js"></script>
 </body>
 </html>
