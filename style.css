@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
   }
-  
   html, body {
     height: 100%;
     font-family: Arial, sans-serif;
@@ -20,6 +19,7 @@
     font-size: 2em;
     border-radius: 0 0 15px 15px;
     margin-bottom: 20px;
+    
   }
   
   p.header {
@@ -113,3 +113,31 @@
     font-size: 0.95em;
   }
   
+
+  .button{
+    position:relative;
+    z-index:10;
+  }
+
+  .infot-box{
+    width: 100%;
+    background-color: #4f4f4f;
+    padding: 20px;
+    margin-top: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    display: block;
+  }
+
+  .img-con {
+    text-align: left; 
+  }
+  
+  .img {
+    width: auto;
+    height: 80px;
+    display: block; 
+    margin: 0; 
+  }
