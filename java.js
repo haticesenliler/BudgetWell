@@ -1,5 +1,12 @@
-// java.js
-function handleClick(containerId) {
-    alert("You clicked: " + containerId);
-    // Here you can add your custom logic, such as navigating or showing something.
-}
+document.addEventListener("DOMContentLoaded", function () {
+    // Select all elements with the class 'column'
+    const columns = document.querySelectorAll(".column");
+
+    // Loop through each column and add a click event listener
+    columns.forEach(column => {
+        column.addEventListener("click", function () {
+            const containerId = this.querySelector("h2").textContent;
+            alert("You clicked: " + containerId);
+        });
+    });
+});
