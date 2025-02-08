@@ -132,12 +132,20 @@
   }
 
   .img-con {
-    text-align: left; 
+    background-color: #4A90E2;
+    padding: 30px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
   }
   
   .img {
-    width: auto;
-    height: 80px;
-    display: block; 
-    margin: 0; 
+    float:right;
+    height:90px;
+    width:3 120px;
+
+
   }
+
+  
+
