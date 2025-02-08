@@ -1,3 +1,11 @@
+body,html{
+  height:100%;
+  width:auto;
+  margin:0;
+  padding:0;
+}
+
+
 .header * {
   box-sizing: border-box;
 }
@@ -12,35 +20,35 @@
 }
 .rec1 {
   background: rgba(139, 0, 253, 0.54);
-  width: 1540px;
-  height: 575px;
+  width: 1686px;
+  height: 570px;
   position: absolute;
-  left: -28px;
-  top: 64px;
+  left: -85px;
+  top: 69px;
 }
 .rec2 {
   background: #e6d0f3;
   opacity: 0.49;
-  width: 1512px;
+  width: 2113px;
   height: 1046px;
   position: absolute;
-  left: 0px;
+  left: -85px;
   top: 639px;
 }
 .rec3{
   background: #c075fe;
-  width: 1512px;
-  height: 135px;
+  width: 1608px;
+  height: 153px;
   position: absolute;
-  left: 0px;
+  left: -55px;
   top: 1651px;
 }
 .rec4 {
   background: #e6d0f3;
-  width: 1512px;
-  height: 88px;
+  width: 1548px;
+  height: 94px;
   position: absolute;
-  left: -3px;
+  left: -22px;
   top: 1px;
 }
 .rec5 {
@@ -75,28 +83,8 @@
   left: 1066px;
   top: 878px;
 }
-.logo{
-  color: #000000;
-  text-align: left;
-  font-family: "Inter-Regular", sans-serif;
-  font-size: 32px;
-  font-weight: 400;
-  position: absolute;
-  left: 74px;
-  top: 21px;
-}
-.png{
-  color: #000000;
-  text-align: left;
-  font-family: "Inter-Regular", sans-serif;
-  font-size: 32px;
-  font-weight: 400;
-  position: absolute;
-  left: 526px;
-  top: 21px;
-  width: 894px;
-  height: 27px;
-}
+
+
 
 .budgeting {
   color: #000000;
@@ -124,12 +112,13 @@
 }
 .rec9 {
   background: #d9d9d9;
-  width: 811px;
-  height: 420px;
+  width: auto;
+  height: 400px;
   position: absolute;
   left: 609px;
   top: 127px;
 }
+
 .pic{
   color: #000000;
   text-align: left;
@@ -155,7 +144,7 @@
   color: #000000;
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
-  font-size: 48px;
+  font-size: 29px;
   font-weight: 400;
   position: absolute;
   left: 170px;

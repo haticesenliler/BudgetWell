@@ -1,77 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./vars.css">
-  <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Honey - Smart Planner Pro</title>
+    <style>
+        /* General styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0e6f8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex: 1;
+        }
+
+        /* More Obvious Gradient Header */
+        .header {
+            position: relative;
+            height: 200px;
+            /* Reduced Color Stops for More Pronounced Gradient */
+            background: linear-gradient(135deg, #6c3483, #a569bd); /* Fewer Shades, Stronger Gradient */
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Remove the background boxes from the header */
+        .header div[class^="rec"] {
+            display: none;
+        }
+
+        .home {
+            color: white;
+            font-size: 60px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 0.25rem;
+        }
+
+        .angle {
+            color: white;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .never {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 50px;
+            color: #6c3483;
+            font-weight: bold;
+
+
+        }
+
+        /* Dashboard styles */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            grid-template-rows: auto;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .planner-box {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .box-title {
+            font-size: 1.5rem;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        #budget-box .box-title {
+            background: #9b59b6;
+        }
+
+        #reminder-box .box-title {
+            background: #c0392b;
+        }
+
+        #daily-box .box-title {
+            background: #9b59b6;
+        }
+
+        #advice-box .box-title {
+            background: #7D3C98;
+        }
+
   
-  
-  <style>
-   a,
-   button,
-   input,
-   select,
-   h1,
-   h2,
-   h3,
-   h4,
-   h5,
-   * {
-       box-sizing: border-box;
-       margin: 0;
-       padding: 0;
-       border: none;
-       text-decoration: none;
-       background: none;
-   
-       -webkit-font-smoothing: antialiased;
-   }
-   
-   menu, ol, ul {
-       list-style-type: none;
-       margin: 0;
-       padding: 0;
-   }
-   </style>
-  <title>Document</title>
+        .rec9 {
+            text-align: center;
+         
+            margin-bottom: 3px;
+            
+        }
+
+        .rec9 img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 15px;
+            width: 500px;
+        }
+
+        /* Footer styles */
+        footer {
+            background: #8e44ad;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Input and Button Styles */
+        input[type="number"],
+        input[type="date"],
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 0.6rem;
+            margin-bottom: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        /* Cute Button Styles */
+        button {
+            background-color: #a569bd;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: background-color 0.3s ease;
+            margin-top: 0.4rem;
+        }
+
+        button:hover {
+            background-color: #8e44ad;
+        }
+
+        /* Container for buttons */
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            justify-content: flex-start;
+        }
+
+        /* Savings list styles */
+        .savings-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .savings-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.4rem;
+            border-bottom: 1px solid #eee;
+            font-size: 0.85rem;
+        }
+
+        /* Task list styles */
+        .task-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.4rem;
+            border-bottom: 1px solid #eee;
+            font-size: 0.85rem;
+        }
+
+        /* Make sure content stretches to fill box and buttons stick to bottom */
+        .planner-box .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Form grouping style */
+        .form-group {
+            margin-bottom: 0.6rem;
+        }
+
+        /* Advice box content */
+        #advice-box .content {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        #advice-box ol {
+            padding-left: 1.5rem;
+        }
+
+        #advice-box li {
+            margin-bottom: 1rem;
+        }
+
+        #advice-box strong {
+            color: #7D3C98;
+        }
+
+        #advice-box p {
+            margin-bottom: 1rem;
+        }
+
+        /* Adaptable Advice Box */
+        @media (max-width: 992px) { /* Adjust breakpoint as needed */
+            .dashboard {
+                grid-template-columns: 1fr; /* Single column layout */
+            }
+
+            /* Span all 3 columns in single row */
+            #advice-box {
+                grid-column: 1; /* advice box takes full width */
+                min-height: auto; /* set height to auto */
+            }
+            .planner-box {
+                min-height: auto; /* set other planner boxes to auto */
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="header ">
-    <div class="rec1"></div>
-    <div class="rec2"></div>
-    <div class="rec3"></div>
-    <div class="rec4"></div>
-    <div class="rec5"></div>
-    <div class="rect6"></div>
-    <div class="rec7"></div>
-    <div class="rec8"></div>
-    <div class="logo">logo here</div>
-    <div class="png">
-      budgeting, reminder, what was the other one??
-      <br />
+    <!-- Header -->
+    <div class="header">
+        <div class="home">BudgetBell</div>
+        <div class="angle">Save Money With Your Girly Bell</div>
     </div>
-    <div class="budgeting">BUDGETING</div>
-    <div class="reminder">REMINDER</div>
-    <div class="rec9"></div>
-    <div class="pic">
-      we gonna put a good picture here
+
+    <!-- Motivational Image -->
+    <div class="rec9">
+        <img src="well.png" alt="Motivational Image">
     </div>
-    <div class="app"></div>
-    <div class="home">home</div>
-    <div class="angle">a short explanation</div>
-    <div
-      class="Student"
-    >
-      we may have to talk with a mentor about here for capital bank
-      <br />
-      Student Credit Card / Discounts
-      <br />
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="never">Never Miss a Due Date Again</div>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard">
+            <!-- Budgeting Box -->
+            <div class="planner-box" id="budget-box">
+                <div class="box-title">Budgeting</div>
+                <div class="content">
+                    <div class="form-group">
+                        <input type="number" id="amount-input" placeholder="Enter amount">
+                        <button onclick="addSavings()">Add Savings</button>
+                    </div>
+                    <div class="total-savings" id="total-savings">Total Saved: $0</div>
+                    <ul class="savings-list" id="savings-list"></ul>
+                    <div class="button-container">
+                        <button onclick="resetBudget()">Reset Budget</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reminder Box -->
+            <div class="planner-box" id="reminder-box">
+                <div class="box-title">Reminder</div>
+                <div class="content">
+                    <div class="form-group">
+                        <input type="date" class="calendar" id="reminder-date">
+                        <input type="text" id="task-input" placeholder="Enter task...">
+                        <button onclick="addTask()">Add Task</button>
+                    </div>
+                    <ul class="task-list" id="task-list"></ul>
+                    <div class="button-container">
+                        <button onclick="resetReminders()">Reset Reminders</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Box -->
+            <div class="planner-box" id="daily-box">
+                <div class="box-title">Daily</div>
+                <div class="content">
+                    <div class="form-group">
+                        <textarea id="daily-input" placeholder="Write your daily notes..."></textarea>
+                        <button onclick="saveDailyEntry()">Save Entry</button>
+                    </div>
+                    <div id="daily-entries"></div>
+                    <div class="button-container">
+                        <button onclick="resetDaily()">Reset Daily Notes</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="planner-box" id="advice-box" style="grid-column: 1 / -1;">
+                <div class="box-title">Advice for Young People</div>
+                <div class="content">
+                    <p>
+                        Welcome to Money Honey!  Here's some targeted advice designed to help young people like you take control of your time and finances:
+                    </p>
+                    <ol>
+                        <li>
+                            <strong>Set Clear Goals:</strong> Before you can budget or plan, know what you're aiming for!  What do you want to achieve in the next month, year, or five years?  A concert?  A new laptop?  A down payment on a car?  Write it down!
+                        </li>
+                        <li>
+                            <strong>Master the 50/30/20 Budget:</strong>  Divide your after-tax income into three categories: 50% for <strong>needs</strong> (rent, food, transportation), 30% for <strong>wants</strong> (entertainment, dining out), and 20% for <strong>savings and debt repayment.</strong>  Use our budgeting tool to track this!
+                        </li>
+                        <li>
+                            <strong>Crush Procrastination with the Pomodoro Technique:</strong> Work in focused 25-minute intervals, followed by a 5-minute break. After four "pomodoros," take a longer break (15-20 minutes). The Reminder Tool can help you schedule these!
+                        </li>
+                        <li>
+                            <strong>Automate Savings:</strong>  Set up automatic transfers from your checking account to your savings account each month.  Even a small amount adds up over time!  Treat it like a bill you *have* to pay.
+                        </li>
+                        <li>
+                            <strong>Review and Adjust Regularly:</strong>  Life changes!  Review your budget and schedule weekly or bi-weekly.  Are you sticking to your 50/30/20 plan?  Are you meeting your goals?  Adapt as needed!  Don't be afraid to experiment.
+                        </li>
+                        <li>
+                            <strong>Learn to Say "No":</strong>  It's okay to decline social invitations or purchases that don't align with your financial goals.  Your future self will thank you!
+                        </li>
+                        <li>
+                            <strong>Invest Early (Even Small Amounts):</strong> The power of compounding interest is incredible! Even if you only invest small amounts early on, your money can grow exponentially over time.
+                        </li>
+                    </ol>
+                    <p>
+                        Remember, consistency is key.  Small changes, consistently applied, can lead to big results over time.  You've got this!
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="never"> Never Miss a Due Date Again</div>
-    <div class="headline">HEADLINE</div>
-  </div>
-  
+
+    <footer>
+      <strong>Created By:</strong> <br>
+      Zainab Sajjad <br>
+      Zarin Tasnim <br>
+      Hatice Busra Senliler <br>
+      @BudgetBell
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        let savings = []; // Array to hold savings amounts
+        let dailyEntries = []; // Array to hold daily entries
+
+        // Function to add savings
+        function addSavings() {
+            const amountInput = document.getElementById('amount-input');
+            const amount = parseFloat(amountInput.value);
+
+            if (!isNaN(amount) && amount > 0) {
+                savings.push(amount); // Add amount to savings array
+                updateSavingsDisplay(); // Update display
+                amountInput.value = ''; // Clear input
+                saveData(); // save data to local storage
+            }
+        }
+
+        // Function to update the savings display
+        function updateSavingsDisplay() {
+            const savingsList = document.getElementById('savings-list');
+            const totalSavingsDisplay = document.getElementById('total-savings');
+
+            savingsList.innerHTML = ''; // Clear existing list
+            let total = 0;
+
+            for (let i = 0; i < savings.length; i++) {
+                const amount = savings[i];
+                total += amount;
+
+                const listItem = document.createElement('li');
+                listItem.className = 'savings-item';
+                listItem.textContent = `+$${amount.toFixed(2)}`;
+                savingsList.appendChild(listItem);
+            }
+
+            totalSavingsDisplay.textContent = `Total Saved: $${total.toFixed(2)}`;
+        }
+
+        // Function to reset the budget
+        function resetBudget() {
+            savings = []; // Clear savings array
+            updateSavingsDisplay(); // Update display
+            saveData(); // save data to local storage
+        }
+
+        // Function to add a task
+        function addTask() {
+            const taskInput = document.getElementById('task-input');
+            const dateInput = document.getElementById('reminder-date');
+            const taskList = document.getElementById('task-list');
+
+            if (taskInput.value && dateInput.value) {
+                const taskItem = document.createElement('li');
+                taskItem.className = 'task-item';
+                taskItem.innerHTML = `
+                    <span>${taskInput.value}</span>
+                    <div>
+                        <span class="entry-date">${new Date(dateInput.value).toLocaleDateString()}</span>
+                        <button class="delete-btn" onclick="deleteTask(this)">×</button>
+                    </div>
+                `;
+
+                taskList.appendChild(taskItem);
+                taskInput.value = '';
+            }
+        }
+
+        // Function to delete a task
+        function deleteTask(button) {
+            button.closest('li').remove();
+        }
+
+        // Function to reset the reminders
+        function resetReminders() {
+            const taskList = document.getElementById('task-list');
+            taskList.innerHTML = '';
+        }
+
+        // Function to save a daily entry
+        function saveDailyEntry() {
+            const dailyInput = document.getElementById('daily-input');
+            const entryText = dailyInput.value;
+
+            if (entryText.trim() !== '') {
+                dailyEntries.push(entryText);
+                updateDailyDisplay();
+                dailyInput.value = '';
+                saveData();
+            }
+        }
+
+        // Function to update the daily entries display
+        function updateDailyDisplay() {
+            const dailyEntriesDiv = document.getElementById('daily-entries');
+            dailyEntriesDiv.innerHTML = ''; // Clear existing entries
+
+            for (let i = 0; i < dailyEntries.length; i++) {
+                const entry = dailyEntries[i];
+                const entryElement = document.createElement('p');
+                entryElement.textContent = entry;
+                dailyEntriesDiv.appendChild(entryElement);
+            }
+        }
+
+        // Function to reset the daily notes
+        function resetDaily() {
+            dailyEntries = [];
+            updateDailyDisplay();
+            saveData();
+        }
+
+         // Function to save data to local storage
+        function saveData() {
+            localStorage.setItem('savings', JSON.stringify(savings));
+            localStorage.setItem('dailyEntries', JSON.stringify(dailyEntries));
+        }
+
+        // Function to load data from local storage
+        function loadData() {
+            const savedSavings = localStorage.getItem('savings');
+            if (savedSavings) {
+                savings = JSON.parse(savedSavings);
+            }
+
+            const savedDailyEntries = localStorage.getItem('dailyEntries');
+            if (savedDailyEntries) {
+                dailyEntries = JSON.parse(savedDailyEntries);
+            }
+        }
+
+        // Initialize - Load data and update displays on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData(); // Load saved data from localStorage
+            updateSavingsDisplay(); // Update savings display
+            updateDailyDisplay(); // Update daily display
+        });
+    </script>
 </body>
 </html>
