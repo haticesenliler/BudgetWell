@@ -1,8 +1,13 @@
-body {
+html, body {
+    height: 100%;
     margin: 0;
-    padding: 0;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
     font-family: Arial, sans-serif;
-    background-color: #c3bef0;
+    background-color: #cadefc;
   }
   
   .header {
@@ -26,5 +31,6 @@ body {
     text-align: left;
     font-size: 1em;
     line-height: 1.5;
+    margin-top: auto;
   }
   
