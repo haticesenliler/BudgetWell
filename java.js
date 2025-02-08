@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Loop through each column and add a click event listener
     columns.forEach(column => {
         column.addEventListener("click", function () {
-            const containerId = this.querySelector("h2").textContent;
-            alert("You clicked: " + containerId);
+            const containerText = this.querySelector("h2").textContent;
+            alert("You clicked: " + containerText);
         });
     });
 });
