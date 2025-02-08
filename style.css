@@ -1,3 +1,4 @@
+/* Existing CSS */
 .mac-book-pro-14-1,
 .mac-book-pro-14-1 * {
   box-sizing: border-box;
@@ -59,6 +60,8 @@
   position: absolute;
   left: 120px;
   top: 878px;
+  cursor: pointer; /* Make it clickable */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effect */
 }
 .rectangle-8 {
   background: #ffffff;
@@ -67,6 +70,8 @@
   position: absolute;
   left: 593px;
   top: 878px;
+  cursor: pointer; /* Make it clickable */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effect */
 }
 .rectangle-9 {
   background: #ffffff;
@@ -75,6 +80,8 @@
   position: absolute;
   left: 1066px;
   top: 878px;
+  cursor: pointer; /* Make it clickable */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effect */
 }
 .logo-here {
   color: #000000;
@@ -210,4 +217,28 @@
   top: 689px;
   width: 1116px;
   height: 151px;
+}
+
+/* New CSS for the big box */
+.big-box {
+  background: #28a745; /* Green background */
+  color: white;
+  padding: 40px;
+  text-align: center;
+  border-radius: 10px;
+  width: 80%;
+  position: absolute;
+  left: 10%;
+  top: 1200px; /* Adjust position as needed */
+  display: none; /* Initially hidden */
+  z-index: 10; /* Ensure it appears above other elements */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow */
+}
+
+/* Hover effects for clickable rectangles */
+.rectangle-7:hover,
+.rectangle-8:hover,
+.rectangle-9:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow */
 }
