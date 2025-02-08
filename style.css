@@ -1,16 +1,30 @@
-html,body{
-    margin:0;
-    padding:0;
-    height:100%;
-}
-
-.header{
-    text-align: center;
-    font-size: larger;
-    color:rgb(117, 117, 228);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    background: lightblue;
-    padding: 10px 0;
+body {
     margin: 0;
-}
-
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #c3bef0;
+  }
+  
+  .header {
+    text-align: center;
+  }
+  
+  h1.header {
+    font-size: 3em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  p.header {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  .foot {
+    background-color: #a393eb;
+    padding: 20px 20px 20px 40px;
+    text-align: left;
+    font-size: 1em;
+    line-height: 1.5;
+  }
+  
