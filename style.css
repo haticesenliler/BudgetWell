@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body,html{
   height:100%;
   width:auto;
@@ -58,7 +59,35 @@ body,html{
   position: absolute;
   left: 58px;
   top: 1241px;
+=======
+/* Add these new styles */
+.big-box {
+  background: #28a745;
+  color: white;
+  padding: 40px;
+  text-align: center;
+  border-radius: 10px;
+  width: 80%;
+  position: absolute;
+  left: 10%;
+  top: 1200px;
+  display: none;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.rec6, .rec7, .rec8 {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.rec6:hover, .rec7:hover, .rec8:hover {
+  transform: scale(1.05);
+>>>>>>> b1188a0c060a20da530197e9aad0350e49f2cbc2
+}
+
+/* Fix existing CSS typos */
+/* Change .rect6 to .rec6 */
 .rec6 {
   background: #ffffff;
   width: 354px;
@@ -67,6 +96,7 @@ body,html{
   left: 120px;
   top: 878px;
 }
+<<<<<<< HEAD
 .rec7 {
   background: #ffffff;
   width: 354px;
@@ -165,6 +195,11 @@ body,html{
   height: 201px;
 }
 .student {
+=======
+
+/* Keep the rest of your existing CSS as-is, but fix the .student class */
+.Student {  /* Match HTML class capitalization */
+>>>>>>> b1188a0c060a20da530197e9aad0350e49f2cbc2
   color: #000000;
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
@@ -176,29 +211,3 @@ body,html{
   width: 1333px;
   height: 349px;
 }
-.never {
-  color: #ffffff;
-  text-align: left;
-  font-family: "JacquesFrancoisShadow-Regular", sans-serif;
-  font-size: 56.166465759277344px;
-  font-weight: 400;
-  position: absolute;
-  left: 58px;
-  top: 153px;
-  width: 461.62px;
-  height: 117px;
-}
-.headline {
-  color: #000000;
-  text-align: left;
-  font-family: "Inter-Regular", sans-serif;
-  font-size: 48px;
-  font-weight: 400;
-  position: absolute;
-  right: 6px;
-  top: 689px;
-  width: 1116px;
-  height: 151px;
-}
-
-

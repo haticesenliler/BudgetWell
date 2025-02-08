@@ -1,11 +1,15 @@
-// JavaScript to handle box clicks
 function showBox(boxName) {
-    const bigBox = document.getElementById('bigBox');
-    const bigBoxContent = document.getElementById('bigBoxContent');
+  const bigBox = document.getElementById('bigBox');
+  const bigBoxContent = document.getElementById('bigBoxContent');
+
+  // Update content
+  bigBoxContent.textContent = `${boxName} content goes here`;
   
-    // Update the content of the big box
-    bigBoxContent.textContent = `You clicked ${boxName}`;
+  // Position big box below clicked element
+  const clickedBox = event.target;
+  const rect = clickedBox.getBoundingClientRect();
   
-    // Show the big box
-    bigBox.style.display = 'block';
-  }
+  bigBox.style.top = `${rect.bottom + 20}px`;
+  bigBox.style.left = `${rect.left}px`;
+  bigBox.style.display = 'block';
+}
